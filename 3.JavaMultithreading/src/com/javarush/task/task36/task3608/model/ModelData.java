@@ -17,7 +17,7 @@ public class ModelData {
         this.displayDeletedUserList = displayDeletedUserList;
     }
 
-    public User getActiveUser() {
+    public User getActiveUser() { //
         return activeUser;
     }
 
