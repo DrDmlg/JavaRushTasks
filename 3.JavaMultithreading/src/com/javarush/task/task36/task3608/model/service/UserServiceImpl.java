@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
                 result.add(user);
             }
         }
-
         return result;
     }
 

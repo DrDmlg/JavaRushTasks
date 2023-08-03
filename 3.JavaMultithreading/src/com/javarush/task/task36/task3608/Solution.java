@@ -24,6 +24,7 @@ public class Solution {
         usersView.fireEventShowAllUsers(); //возвращает всех пользоваталей из dao
         usersView.fireEventOpenUserEditForm(126L); //редактирование польз. по id
         editUserView.fireEventUserDeleted(124L); //удаление польз. по id
+        editUserView.fireEventUserChanged("Golybev", 126L, 2); //добавляет нового пользователя
         usersView.fireEventShowDeletedUsers();
     }
 }
