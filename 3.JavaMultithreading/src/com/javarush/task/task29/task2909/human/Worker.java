@@ -13,7 +13,7 @@ public class Worker {
     public void live() {
         human.live();
     }
-
+    
     public double getSalary() {
         return salary;
     }
