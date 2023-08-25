@@ -1,7 +1,10 @@
 package com.javarush.task.task29.task2909.human;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class University {
 
@@ -38,17 +41,23 @@ public class University {
         this.students = students;
     }
 
-    public Student getStudentWithAverageGrade() {
-        //TODO:
-        return null;
+    //вернет студента с заданным баллом
+    public Student getStudentWithAverageGrade(double averageGrade) {
+        return getStudents().stream().filter(student -> Double.compare(student.getAverageGrade(), averageGrade) == 0).findFirst().get();
     }
 
-    public Student getStudentWithMaxAverageGrade(double averageGrade) {
-        //TODO:
-        return null;
+    //вернет студента с максимальным средним баллом
+    public Student getStudentWithMaxAverageGrade() {
+        return getStudents().stream().max(Comparator.comparingDouble(Student::getAverageGrade)).get();
     }
 
-    public void getStudentWithMinAverageGradeAndExpel() {
-        //TODO:
+    //вернет студента с минимальным средним баллом
+    public Student getStudentWithMinAverageGrade() {
+        return getStudents().stream().min(Comparator.comparingDouble(Student::getAverageGrade)).get();
     }
+
+    public void expel(Student student) {
+       students.remove(student);
+    }
+
 }
