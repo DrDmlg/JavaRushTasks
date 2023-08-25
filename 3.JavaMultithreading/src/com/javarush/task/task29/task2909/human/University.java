@@ -56,6 +56,7 @@ public class University {
         return getStudents().stream().min(Comparator.comparingDouble(Student::getAverageGrade)).get();
     }
 
+
     public void expel(Student student) {
        students.remove(student);
     }
