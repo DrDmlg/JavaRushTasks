@@ -5,22 +5,23 @@ import java.util.Collections;
 import java.util.List;
 
 public class Human implements Alive {
-
-    public class Size {
-        public int height;
-        public int weight;
-    }
-
     private static int nextId = 0;
     private int id;
     protected int age;
     protected String name;
+    private BloodGroup bloodGroup;
+
+    private Size size;
 
     private List<Human> children = new ArrayList<>();
 
-    protected Size size;
+    public static class Size {
 
-    private BloodGroup bloodGroup;
+        public int height;
+        public int weight;
+
+    }
+
 
     public BloodGroup getBloodGroup() {
         return bloodGroup;
@@ -75,7 +76,9 @@ public class Human implements Alive {
     }
 
     public void printSize() {
-        System.out.printf("Рост: %d Вес: %d", size.height, size.weight);
+        // System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
+//        Human.Size size = new Human.Size();// возможно придется удалить
+//        System.out.printf("Рост: %d Вес: %d", size.height, size.weight);// возможно придется удалить
     }
 
 
