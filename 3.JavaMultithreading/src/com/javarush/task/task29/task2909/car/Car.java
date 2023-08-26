@@ -1,5 +1,6 @@
 package com.javarush.task.task29.task2909.car;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Car {
@@ -24,31 +25,49 @@ public class Car {
     }
 
     public static Car create(int type, int numberOfPassengers) {
+        Car car = null;
         switch (type) {
             case TRUCK:
-                return new Truck(numberOfPassengers);
+                car = new Truck(numberOfPassengers);
+                break;
             case SEDAN:
-                return new Sedan(numberOfPassengers);
+                car = new Sedan(numberOfPassengers);
+                break;
             case CABRIOLET:
-                return new Cabriolet(numberOfPassengers);
-            default:
-                return null;
+                car = new Cabriolet(numberOfPassengers);
+                break;
         }
+        return car;
     }
 
-    public int fill(double numberOfLiters) {
-        if (numberOfLiters < 0)
-            return -1;
-        fuel += numberOfLiters;
-        return 0;
+
+    public boolean isSummer(Date date, Date summerStart, Date summerEnd) {
+        return date.after(summerStart) && date.before(summerEnd);
     }
+
+    public double getWinterConsumption(int length) {
+        return length * winterFuelConsumption + winterWarmingUp;
+    }
+
+
+    public double getSummerConsumption(int length) {
+        return length * summerFuelConsumption;
+    }
+
+    public void fill(double numberOfLiters) throws Exception {
+        if (numberOfLiters < 0) {
+            throw new Exception();
+        }
+        fuel += numberOfLiters;
+    }
+
 
     public double getTripConsumption(Date date, int length, Date SummerStart, Date SummerEnd) {
         double consumption;
-        if (date.before(SummerStart) || date.after(SummerEnd)) {
-            consumption = length * winterFuelConsumption + winterWarmingUp;
+        if (!isSummer(date, SummerStart, SummerEnd)) {
+            consumption = getWinterConsumption(length);
         } else {
-            consumption = length * summerFuelConsumption;
+            consumption = getSummerConsumption(length);
         }
         return consumption;
     }
