@@ -1,14 +1,25 @@
 package com.javarush.task.task29.task2909.user;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
-    private String name;
-    private String surname;
-    private int age;
 
-    private Work work;
-    private Address address;
+    String name;
+    String surname;
+    int age;
 
-    private boolean man;
+    @Getter(AccessLevel.NONE) // не генерирует геттер для этого поля
+    @Setter(AccessLevel.NONE) // не генерирует сеттер для этого поля
+    Work work;
+
+    Address address;
+    boolean man;
 
     public User(String name, String surname, int age) {
         this.name = name;
@@ -16,29 +27,6 @@ public class User {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public String getCountry() {
         return address.getCountry();
@@ -60,16 +48,8 @@ public class User {
         return getCountry() + " " + getCity() + " " + address.getHouse();
     }
 
-    public Work getWork() {
-        return work;
-    }
-
-    public void setWork(Work work) {
-        this.work = work;
-    }
-
     public boolean isMan() {
-        return man;
+        return this.man;
     }
 
     public void setMan(boolean man) {

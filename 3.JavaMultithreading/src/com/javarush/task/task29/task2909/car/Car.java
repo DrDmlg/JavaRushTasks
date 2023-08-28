@@ -82,7 +82,6 @@ public abstract class Car {
         return consumption;
     }
 
-
     public boolean isDriverAvailable() {
         return driverAvailable;
     }

@@ -1,13 +1,26 @@
 package com.javarush.task.task29.task2909.human;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class Human implements Alive {
     private static int nextId = 0;
+
+    @Getter
     private int id;
+
+    @Getter
+    @Setter
     protected int age;
+
+    @Getter
+    @Setter
     protected String name;
     private BloodGroup bloodGroup;
 
@@ -21,7 +34,6 @@ public class Human implements Alive {
         public int weight;
 
     }
-
 
     public BloodGroup getBloodGroup() {
         return bloodGroup;
@@ -38,29 +50,9 @@ public class Human implements Alive {
         nextId++;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public void live() {
 
-    }
-
-    public int getId() {
-        return id;
     }
 
     public List<Human> getChildren() {
@@ -76,11 +68,8 @@ public class Human implements Alive {
     }
 
     public void printSize() {
-        // System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
-//        Human.Size size = new Human.Size();// возможно придется удалить
-//        System.out.printf("Рост: %d Вес: %d", size.height, size.weight);// возможно придется удалить
+        System.out.printf("Рост: %d Вес: %d", size.height, size.weight);
     }
-
 
     public String getPosition() {
         return "Человек";

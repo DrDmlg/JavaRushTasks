@@ -1,8 +1,11 @@
 package com.javarush.task.task29.task2909.human;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 public class BloodGroup {
 
-    private  final int code;
+    private final int code;
 
     private BloodGroup(int code) {
         this.code = code;

@@ -1,28 +1,21 @@
 package com.javarush.task.task29.task2909.human;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class Worker extends Human {
 
-    private double salary;
-    private String company;
-
+    double salary;
+    String company;
 
     public Worker(String name, int age) {
         super(name, age);
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 }
