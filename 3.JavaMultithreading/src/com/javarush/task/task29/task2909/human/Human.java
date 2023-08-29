@@ -10,6 +10,7 @@ import java.util.List;
 
 
 public class Human implements Alive {
+
     private static int nextId = 0;
 
     @Getter
@@ -22,6 +23,9 @@ public class Human implements Alive {
     @Getter
     @Setter
     protected String name;
+
+    @Getter
+    @Setter
     private BloodGroup bloodGroup;
 
     private Size size;
@@ -33,14 +37,6 @@ public class Human implements Alive {
         public int height;
         public int weight;
 
-    }
-
-    public BloodGroup getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(BloodGroup bloodGroup) {
-        this.bloodGroup = bloodGroup;
     }
 
     public Human(String name, int age) {
