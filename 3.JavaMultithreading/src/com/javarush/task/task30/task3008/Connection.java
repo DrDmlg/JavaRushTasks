@@ -20,13 +20,9 @@ public class Connection implements Closeable {
         this.in = new ObjectInputStream(socket.getInputStream());
     }
 
-    public void send(Message message) {
+    public void send(Message message) throws IOException {
         synchronized (this.out) {
-            try {
-                out.writeObject(message);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            out.writeObject(message);
         }
     }
 
