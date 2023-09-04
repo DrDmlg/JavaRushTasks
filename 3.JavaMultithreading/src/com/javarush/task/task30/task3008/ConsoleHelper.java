@@ -15,23 +15,30 @@ public class ConsoleHelper {
     }
 
     public static String readString() {
-        while (true) {
+        String input = null;
+        boolean incorrect = true;
+        while (incorrect) {
             try {
-                String input = reader.readLine();
-                if (input != null) return input;
+                input = reader.readLine();
+                incorrect = false;
             } catch (IOException e) {
-                writeMessage("Произошла ошибка при попытке ввода текста. Попробуйте еще раз.");
+                System.out.println("Произошла ошибка при попытке ввода текста. Попробуйте еще раз.");
             }
         }
+        return input;
     }
 
     public static int readInt() {
-        while (true) {
+        int digital = 0;
+        boolean incorrect = true;
+        while (incorrect) {
             try {
-                return Integer.parseInt(readString().trim());
+                digital = Integer.parseInt(readString());
+                incorrect = false;
             } catch (NumberFormatException e) {
-                writeMessage("Произошла ошибка при попытке ввода числа. Попробуйте еще раз.");
+                System.out.println("Произошла ошибка при попытке ввода числа. Попробуйте еще раз.");
             }
         }
+        return digital;
     }
 }
