@@ -3,8 +3,12 @@ package com.javarush.task.task30.task3008;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class Server {
 
@@ -46,19 +50,23 @@ public class Server {
 
         @Override
         public void run() {
+            /*
             try {
-                serverHandshake(new Connection(socket));
+                String userName = serverHandshake(new Connection(socket));
+                notifyUsers(new Connection(socket), userName);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
+
+             */
         }
 
-        private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {
+        private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException { //протокол проверки клиента
 
             while (true) {
-                connection.send(new Message(MessageType.NAME_REQUEST));
+                connection.send(new Message(MessageType.NAME_REQUEST, "Введите свое имя"));
                 Message message = connection.receive();
 
                 if (message.getType() != MessageType.USER_NAME) {
@@ -66,49 +74,37 @@ public class Server {
                 }
 
                 if (message.getData().equals("")) {
+                    connection.send(new Message(MessageType.NAME_REQUEST, "Вы не ввели имя! Попробуйте еще раз"));
                     continue;
                 }
 
                 if (!connectionMap.containsKey(message.getData())) {
                     connectionMap.put(message.getData(), connection);
-                    connection.send(new Message(MessageType.NAME_ACCEPTED));
+                    connection.send(new Message(MessageType.NAME_ACCEPTED, "Вы были успешно добавлены в чат"));
                     return message.getData();
                 }
             }
         }
-    }
-}
 
+        private void notifyUsers(Connection connection, String userName) throws IOException { //отправка новому пользователю о существующих участиков в чате
 
-
-/*
- private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {
-            String userName = "";
-            while (true) {
-                connection.send(new Message(MessageType.USER_NAME, "Введите имя пользователя"));
-                Message message = connection.receive();
-                if (message.getType() == MessageType.USER_NAME) {
-                    userName = message.getData();
-                    ConsoleHelper.writeMessage(userName + " Возможно имя пустое");
-                }
-                if ((!userName.equals("") && (!connectionMap.containsKey(userName)))) {
-                    connectionMap.put(userName, connection);
-                    connection.send(new Message(MessageType.USER_NAME, "Ваше имя принято!"));
-                }
-                return userName;
+            for (String name : connectionMap.keySet()) {
+                if (!name.equals(userName))  connection.send(new Message(MessageType.USER_ADDED, name));
             }
+
+           /* List<Map.Entry<String, Connection>> entries = new ArrayList<>(connectionMap.entrySet());
+
+            entries.stream().filter(user -> !user.getKey().equals(userName))
+                    .forEach(user -> {
+                        try {
+                            connection.send(new Message(MessageType.USER_ADDED, user.getKey()));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+
+            */
         }
     }
 }
- */
 
-  /* for (String key : connectionMap.keySet()) {
-            Connection connection = connectionMap.get(key);
-            try {
-                connection.send(message);
-            } catch (IOException e) {
-                ConsoleHelper.writeMessage("Возникла ошибка при отправке сообщения.");
-            }
-        }
-
-         */
