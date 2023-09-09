@@ -59,7 +59,7 @@ public class Server {
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
+            
              */
         }
 
@@ -87,12 +87,11 @@ public class Server {
         }
 
         private void notifyUsers(Connection connection, String userName) throws IOException { //отправка новому пользователю о существующих участиков в чате
-
             for (String name : connectionMap.keySet()) {
-                if (!name.equals(userName))  connection.send(new Message(MessageType.USER_ADDED, name));
+                if (!name.equals(userName)) connection.send(new Message(MessageType.USER_ADDED, name));
             }
 
-           /* List<Map.Entry<String, Connection>> entries = new ArrayList<>(connectionMap.entrySet());
+            /*List<Map.Entry<String, Connection>> entries = new ArrayList<>(connectionMap.entrySet());
 
             entries.stream().filter(user -> !user.getKey().equals(userName))
                     .forEach(user -> {
@@ -103,8 +102,22 @@ public class Server {
                         }
                     });
 
-            */
+             */
+        }
+
+        private void serverMainLoop(Connection connection, String userName) throws IOException, ClassNotFoundException {
+            while (true) {
+                Message message = connection.receive();
+
+                if (message.getType() == MessageType.TEXT) {
+                    String data = message.getData();
+                    sendBroadcastMessage(new Message(MessageType.TEXT, userName + ": " + data));
+                } else {
+                    ConsoleHelper.writeMessage("Получено сообщение от " + socket.getRemoteSocketAddress() + ". Тип сообщения не соответствует протоколу.");
+                }
+            }
         }
     }
 }
+
 
