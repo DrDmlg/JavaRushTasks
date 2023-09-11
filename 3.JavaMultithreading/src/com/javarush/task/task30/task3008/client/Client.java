@@ -30,7 +30,6 @@ public class Client {
                 this.wait(); //ждем пока сокет установит соединение
             } catch (InterruptedException e) {
                 ConsoleHelper.writeMessage("Произошла ошибка во время ожидания.");
-                return;
             }
 
             if (clientConnected) {
@@ -39,14 +38,17 @@ public class Client {
                 ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента.");
             }
 
-            // Пока не будет введена команда exit, считываем сообщения с консоли и отправляем их на сервер
             while (clientConnected) {
                 String message = ConsoleHelper.readString();
                 if (message.equals("exit")) {
                     break;
                 }
                 if (shouldSendTextFromConsole()) {
-                    sendTextMessage(message);
+                    try {
+                        connection.send(new Message(MessageType.TEXT, message));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }
@@ -67,8 +69,6 @@ public class Client {
         return ConsoleHelper.readString();
     }
 
-    public class SocketThread extends Thread {
-    }
 
     protected SocketThread getSocketThread() {
         return new SocketThread();
@@ -85,6 +85,28 @@ public class Client {
 
     protected boolean shouldSendTextFromConsole() {
         return true;
+    }
+
+    public class SocketThread extends Thread {
+        protected void processIncomingMessage(String message) {
+            ConsoleHelper.writeMessage(message);
+        }
+
+        protected void informAboutAddingNewUser(String userName) {
+            ConsoleHelper.writeMessage("Участник с именем " + userName + " присоединился к чату");
+        }
+
+        protected void informAboutDeletingNewUser(String userName) {
+            ConsoleHelper.writeMessage("Участник с именем " + userName + " покинул чат");
+        }
+
+        protected void notifyConnectionStatusChanged(boolean clientConnected) {
+            Client.this.clientConnected = clientConnected;
+
+            synchronized (Client.this) {
+                Client.this.notify();
+            }
+        }
     }
 }
 
