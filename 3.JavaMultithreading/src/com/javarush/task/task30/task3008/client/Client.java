@@ -13,13 +13,44 @@ public class Client {
     protected Connection connection;
     private volatile boolean clientConnected;
 
-//    public static void main(String[] args) { // удалить
-//        System.out.println(getServerAddress());
-//        System.out.println(getServerPort());
-//        System.out.println(getUserName());
-//    }
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.run();
+    }
 
-    //static у методов удалить
+
+    public void run() {
+
+        SocketThread socketThread = getSocketThread();
+        socketThread.setDaemon(true);
+        socketThread.start();
+
+        synchronized (this) {
+            try {
+                this.wait(); //ждем пока сокет установит соединение
+            } catch (InterruptedException e) {
+                ConsoleHelper.writeMessage("Произошла ошибка во время ожидания.");
+                return;
+            }
+
+            if (clientConnected) {
+                ConsoleHelper.writeMessage("Соединение установлено. Для выхода наберите команду 'exit'.");
+            } else {
+                ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента.");
+            }
+
+            // Пока не будет введена команда exit, считываем сообщения с консоли и отправляем их на сервер
+            while (clientConnected) {
+                String message = ConsoleHelper.readString();
+                if (message.equals("exit")) {
+                    break;
+                }
+                if (shouldSendTextFromConsole()) {
+                    sendTextMessage(message);
+                }
+            }
+        }
+    }
 
     protected String getServerAddress() { //запрос ввода адреса сервера у пользователя
         ConsoleHelper.writeMessage("Введите ip-адрес сервера:");
@@ -37,25 +68,26 @@ public class Client {
     }
 
     public class SocketThread extends Thread {
+    }
 
-        protected SocketThread getSocketThread() {
-            return new SocketThread();
-        }
+    protected SocketThread getSocketThread() {
+        return new SocketThread();
+    }
 
-        protected void sendTextMessage(String text) {
-            try {
-                connection.send(new Message(MessageType.TEXT, text));
-            } catch (IOException e) {
-                ConsoleHelper.writeMessage("Не удалось отправить сообщение");
-                clientConnected = false;
-            }
-        }
-
-        protected boolean shouldSendTextFromConsole() {
-            return true;
+    protected void sendTextMessage(String text) {
+        try {
+            connection.send(new Message(MessageType.TEXT, text));
+        } catch (IOException e) {
+            ConsoleHelper.writeMessage("Не удалось отправить сообщение");
+            clientConnected = false;
         }
     }
+
+    protected boolean shouldSendTextFromConsole() {
+        return true;
+    }
 }
+
 
 
 
