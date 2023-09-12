@@ -151,7 +151,6 @@ public class Client {
                 } else {
                     throw new IOException("Unexpected MessageType");
                 }
-
             }
         }
     }
