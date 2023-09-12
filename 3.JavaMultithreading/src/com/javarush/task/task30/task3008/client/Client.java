@@ -19,6 +19,7 @@ public class Client {
         client.run();
     }
 
+
     public void run() {
 
         SocketThread socketThread = getSocketThread();
