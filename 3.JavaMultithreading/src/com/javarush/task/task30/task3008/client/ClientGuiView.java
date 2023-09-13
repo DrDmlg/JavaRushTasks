@@ -1,17 +1,22 @@
 package com.javarush.task.task30.task3008.client;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ClientGuiView {
-    private final ClientGuiController controller;
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
-    private JFrame frame = new JFrame("Чат");
-    private JTextField textField = new JTextField(50);
-    private JTextArea messages = new JTextArea(10, 50);
-    private JTextArea users = new JTextArea(10, 10);
+public class ClientGuiView {
+    final ClientGuiController controller;
+
+    JFrame frame = new JFrame("Чат");
+    JTextField textField = new JTextField(50);
+    JTextArea messages = new JTextArea(10, 50);
+    JTextArea users = new JTextArea(10, 10);
 
     public ClientGuiView(ClientGuiController controller) {
         this.controller = controller;

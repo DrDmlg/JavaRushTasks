@@ -1,5 +1,9 @@
 package com.javarush.task.task30.task3008;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class Server {
 
@@ -39,14 +45,12 @@ public class Server {
         });
     }
 
+    @AllArgsConstructor
+    @FieldDefaults(level = AccessLevel.PRIVATE)
 
-    private static class Handler extends Thread {
+    static class Handler extends Thread {
 
         private Socket socket;
-
-        public Handler(Socket socket) {
-            this.socket = socket;
-        }
 
         @Override
         public void run() {
@@ -73,7 +77,7 @@ public class Server {
                 connectionMap.remove(userName);
                 sendBroadcastMessage(new Message(MessageType.USER_REMOVED, userName));
             }
-                ConsoleHelper.writeMessage("Cоединение с удаленным адресом " + socket.getRemoteSocketAddress() + " закрыто.");
+            ConsoleHelper.writeMessage("Cоединение с удаленным адресом " + socket.getRemoteSocketAddress() + " закрыто.");
         }
 
         private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException { //протокол проверки клиента

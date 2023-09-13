@@ -1,9 +1,13 @@
 package com.javarush.task.task30.task3008.client;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClientGuiController extends Client {
 
-    private ClientGuiModel model = new ClientGuiModel();
-    private ClientGuiView view = new ClientGuiView(this);
+    ClientGuiModel model = new ClientGuiModel();
+    ClientGuiView view = new ClientGuiView(this);
 
     public static void main(String[] args) {
         ClientGuiController controller = new ClientGuiController();
@@ -35,7 +39,7 @@ public class ClientGuiController extends Client {
         return view.getUserName();
     }
 
-    public ClientGuiModel getModel(){
+    public ClientGuiModel getModel() {
         return model;
     }
 

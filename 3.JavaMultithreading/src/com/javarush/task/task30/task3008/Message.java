@@ -1,7 +1,11 @@
 package com.javarush.task.task30.task3008;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import java.io.Serializable;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 //класс, отвечающий за пересылаемые сообдщения
 public class Message implements Serializable {
 
@@ -19,10 +23,10 @@ public class Message implements Serializable {
     }
 
     public MessageType getType() {
-        return type;
+        return this.type;
     }
 
     public String getData() {
-        return data;
+        return this.data;
     }
 }
