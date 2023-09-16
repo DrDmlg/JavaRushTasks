@@ -7,7 +7,7 @@ public class Solution {
         stockQuote = stockQuote + 20;
        // stockQuote = stockQuote - 300;
         stockQuote = stockQuote + 250;
-        stockQuote = stockQuote + 30;
+        stockQuote = stockQuote + 30; 
         System.out.println("Котировки пошли вверх - " + stockQuote);
     }
 }
