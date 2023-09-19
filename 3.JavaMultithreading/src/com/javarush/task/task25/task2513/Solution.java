@@ -9,16 +9,18 @@ public class Solution {
 
     private static final Random RANDOM = new Random();
 
-    public static synchronized void moveMoney(Account from, Account to, int amount) {
+    public static synchronized void moveMoney(Account from, Account to, int amount) throws InterruptedException {
         int transactionNumber = RANDOM.nextInt(5000);
 
         System.out.printf("Транзакция №%d: списание $%d со счета №%d. Баланс: %d.%n", transactionNumber, amount, from.getNumber(), from.getBalance());
         from.setBalance(from.getBalance() - amount);
-        Thread.yield();
+       // Thread.yield();
+        Thread.sleep(500);
 
         System.out.printf("Транзакция №%d: зачисление $%d на счет №%d. Баланс: %d.%n", transactionNumber, amount, to.getNumber(), to.getBalance());
         to.setBalance(to.getBalance() + amount);
-        Thread.yield();
+        //Thread.yield();
+        Thread.sleep(500);
     }
 
     static class Account {
@@ -60,7 +62,11 @@ public class Solution {
 
         Thread operationThread = new Thread(() -> {
             for (int i = 1; i <= 1000; i *= 10) {
-                moveMoney(a1, a2, i);
+                try {
+                    moveMoney(a1, a2, i);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
