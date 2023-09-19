@@ -1,6 +1,8 @@
 package com.javarush.task.task31.task3110;
 
 
+import com.javarush.task.task31.task3110.command.ExitCommand;
+
 import java.io.*;
 import java.nio.file.Paths;
 
@@ -19,5 +21,8 @@ public class Archiver {
 
         System.out.println("Введите путь к файлу который необходимо архивировать: "); //относительный путь
         fileManager.createZip(Paths.get(reader.readLine()));
+
+        ExitCommand exit = new ExitCommand();
+        exit.execute();
     }
 }
