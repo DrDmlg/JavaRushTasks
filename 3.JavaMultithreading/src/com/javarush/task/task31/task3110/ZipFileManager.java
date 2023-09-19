@@ -10,7 +10,6 @@ import java.util.zip.ZipOutputStream;
 /**
  * Менеджер архива. Он будет совершать операции над файлом архива (файлом, который будет храниться на диске и иметь расширение zip)
  */
-
 public class ZipFileManager {
 
     private Path zipFile;

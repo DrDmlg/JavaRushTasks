@@ -1,8 +1,7 @@
 package com.javarush.task.task31.task3110;
 
-import javax.imageio.stream.ImageInputStream;
+
 import java.io.*;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -15,10 +14,10 @@ public class Archiver {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("Введите полный путь архива в который сохранятся сжатые файлы: ");
+        System.out.println("Введите полный путь файла архива: "); // полный путь к архиву с которым работаем
         ZipFileManager fileManager = new ZipFileManager(Paths.get(reader.readLine()));
 
-        System.out.println("Введите путь к файлу который необходимо архивировать");
+        System.out.println("Введите путь к файлу который необходимо архивировать: "); //относительный путь
         fileManager.createZip(Paths.get(reader.readLine()));
     }
 }
