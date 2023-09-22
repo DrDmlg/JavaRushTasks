@@ -6,9 +6,6 @@ import com.javarush.task.task31.task3110.ZipFileManager;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * Класс реализующий команду удаления архива
- */
 public class ZipRemoveCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {
