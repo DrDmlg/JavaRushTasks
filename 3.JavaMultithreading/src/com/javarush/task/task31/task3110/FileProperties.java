@@ -1,34 +1,18 @@
 package com.javarush.task.task31.task3110;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
+
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Getter
 public class FileProperties {
-    private String name;
-    private long size;
-    private long compressedSize;
-    private int compressionMethod;
-
-    public FileProperties(String name, long size, long compressedSize, int compressionMethod) {
-        this.name = name;
-        this.size = size;
-        this.compressedSize = compressedSize;
-        this.compressionMethod = compressionMethod;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public long getSize() {
-        return size;
-    }
-
-    public long getCompressedSize() {
-        return compressedSize;
-    }
-
-    public int getCompressionMethod() {
-        return compressionMethod;
-    }
+    String name;
+    long size;
+    long compressedSize;
+    int compressionMethod;
 
     public long getCompressionRatio() {
         // Вычисляем степень сжатия
@@ -49,7 +33,6 @@ public class FileProperties {
             builder.append(getCompressionRatio());
             builder.append("%");
         }
-
         return builder.toString();
     }
 }

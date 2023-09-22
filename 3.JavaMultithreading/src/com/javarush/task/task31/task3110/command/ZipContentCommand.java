@@ -19,7 +19,6 @@ public class ZipContentCommand extends ZipCommand {
         for (FileProperties file : files) {
             ConsoleHelper.writeMessage(file.toString());
         }
-
         ConsoleHelper.writeMessage("Содержимое архива прочитано.");
     }
 }

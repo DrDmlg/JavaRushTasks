@@ -2,6 +2,9 @@ package com.javarush.task.task31.task3110;
 
 import com.javarush.task.task31.task3110.exception.PathIsNotFoundException;
 import com.javarush.task.task31.task3110.exception.WrongZipFileException;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -17,13 +20,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@AllArgsConstructor
 public class ZipFileManager {
     // Полный путь zip файла
-    private final Path zipFile;
-
-    public ZipFileManager(Path zipFile) {
-        this.zipFile = zipFile;
-    }
+    Path zipFile;
 
     public void createZip(Path source) throws Exception {
         // Проверяем, существует ли директория, где будет создаваться архив
