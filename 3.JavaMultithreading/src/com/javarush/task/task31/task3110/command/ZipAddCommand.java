@@ -7,9 +7,6 @@ import com.javarush.task.task31.task3110.exception.PathIsNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/**
- * Класс реализующий команду добавления файла в архив
- */
 public class ZipAddCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {
