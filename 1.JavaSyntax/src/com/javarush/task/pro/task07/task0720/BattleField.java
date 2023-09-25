@@ -1,7 +1,7 @@
 package com.javarush.task.pro.task07.task0720;
 
 /* 
-Галавир XIII (3)
+Галавир XIII (4)
 */
 
 public class BattleField {
