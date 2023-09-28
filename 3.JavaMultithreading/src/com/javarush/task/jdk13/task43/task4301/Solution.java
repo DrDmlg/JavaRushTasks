@@ -10,8 +10,6 @@ public class Solution {
         Candidate candidate1 = new Candidate("John", 38, "male", 185, 81, 15);
         Candidate candidate2 = new Candidate("Omar", 44, "male", 175, 75, 15);
 
-
-
         System.out.println(candidate1.equals(candidate2));
     }
 }
