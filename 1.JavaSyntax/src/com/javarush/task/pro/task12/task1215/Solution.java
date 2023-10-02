@@ -39,7 +39,9 @@ public class Solution {
         System.out.println("Начинаем разбирать пирамиду...");
 
         for (int i = glasses.size() - 1; i >= 0; i--) {
+            System.out.println(glasses.get(i));
             glasses.remove(i);
+
         }
 
         if (glasses.size() == 0) {
