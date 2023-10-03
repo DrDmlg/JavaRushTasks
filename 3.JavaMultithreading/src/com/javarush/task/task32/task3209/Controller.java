@@ -4,7 +4,6 @@ import javax.swing.text.html.HTMLDocument;
 import java.io.File;
 
 public class Controller {
-
     private View view;
     private HTMLDocument document;
     private File currentFile;
@@ -14,10 +13,9 @@ public class Controller {
     }
 
     public void init() {
-
     }
 
-    public void exit(){
+    public void exit() {
         System.exit(0);
     }
 
@@ -28,5 +26,9 @@ public class Controller {
         view.setController(controller);
         view.init();
         controller.init();
+    }
+
+    public HTMLDocument getDocument() {
+        return document;
     }
 }
