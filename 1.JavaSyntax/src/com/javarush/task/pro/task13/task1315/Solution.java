@@ -7,6 +7,12 @@ package com.javarush.task.pro.task13.task1315;
 public class Solution {
 
     public static void main(String[] args) {
+      /* Season winter = Season.WINTER;
+        System.out.println(winter);
+        Season spring = Season.SPRING;
+        System.out.println(spring);
+
+       */
         System.out.println(Season.WINTER);
         System.out.println(Season.SPRING);
         System.out.println(Season.SUMMER);
