@@ -10,7 +10,7 @@ public enum Dish {  //Список доступных блюд
     SOUP,
     JUICE,
     WATER;
-
+    
     public static String allDishesToString() {
         List<Dish> dishes = Arrays.asList(Dish.values());
         Collections.shuffle(dishes);
