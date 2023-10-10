@@ -22,7 +22,7 @@ public class ConsoleHelper {
 
     public static List<Dish> getAllDishesForOrder() throws IOException {
         List<Dish> dishes = new ArrayList<>();
-        ConsoleHelper.writeMessage(Dish.allDishesToString());
+        writeMessage(Dish.allDishesToString());
         System.out.println("Введите название блюда");
         while (true) {
             String dishName = readString();

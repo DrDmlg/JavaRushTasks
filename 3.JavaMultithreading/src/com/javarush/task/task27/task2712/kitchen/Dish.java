@@ -11,7 +11,7 @@ public enum Dish {  //Список доступных блюд
     JUICE,
     WATER;
     
-    public static String allDishesToString() {
+    public static String allDishesToString() { //динамический список блюд
         List<Dish> dishes = Arrays.asList(Dish.values());
         Collections.shuffle(dishes);
 
