@@ -24,7 +24,7 @@ public class Solution {
 
         list.stream().map(x -> Optional.ofNullable(x).orElse(text))
                 .forEach(System.out::println);
-
+        
     }
 }
 
