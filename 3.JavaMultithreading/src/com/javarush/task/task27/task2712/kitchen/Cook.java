@@ -5,7 +5,7 @@ import com.javarush.task.task27.task2712.ConsoleHelper;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Cook extends Observable implements Observer  { // повар
+public class Cook extends Observable implements Observer { // повар
 
     private String name;
 
@@ -15,9 +15,9 @@ public class Cook extends Observable implements Observer  { // повар
 
     @Override
     public void update(Observable tablet, Object order) {
-            ConsoleHelper.writeMessage("Start cooking - " + order);
-            setChanged();
-            notifyObservers(order);
+        ConsoleHelper.writeMessage("Start cooking - " + order);
+        setChanged();
+        notifyObservers(order);
     }
 
     @Override

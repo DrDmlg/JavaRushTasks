@@ -19,12 +19,12 @@ public class Order {
     }
 
     public int getTotalCookingTime() {
-         return dishes.stream()
+        return dishes.stream()
                 .mapToInt(Dish::getDuration)
                 .sum();
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return dishes.isEmpty();
     }
 
