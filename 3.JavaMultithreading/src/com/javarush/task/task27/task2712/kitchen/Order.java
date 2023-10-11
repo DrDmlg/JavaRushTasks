@@ -18,15 +18,26 @@ public class Order {
         this.dishes = ConsoleHelper.getAllDishesForOrder();
     }
 
+    public int getTotalCookingTime() {
+         return dishes.stream()
+                .mapToInt(Dish::getDuration)
+                .sum();
+    }
+
+    public boolean isEmpty(){
+        return dishes.isEmpty();
+    }
+
     @Override
     public String toString() {
-        if (dishes.isEmpty()) {
+        if (isEmpty()) {
             return "";
         } else {
-            List<Dish> dishes1 = dishes;
-            return "Your order: [" + dishes1.stream()
+            List<Dish> selectedDishes = dishes;
+            return "Your order: [" + selectedDishes.stream()
                     .map(Dish::toString)
-                    .collect(Collectors.joining(", "))+ "] of " + tablet.toString();
+                    .collect(Collectors.joining(", ")) + "] of " + tablet.toString() + ", cooking time " +
+                    getTotalCookingTime() + "min";
         }
     }
 }
