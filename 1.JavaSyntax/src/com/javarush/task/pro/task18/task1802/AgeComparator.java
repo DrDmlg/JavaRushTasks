@@ -10,6 +10,12 @@ public class AgeComparator implements Comparator<Student> {
 
     @Override
     public int compare(Student student1, Student student2) {
-        return student2.getAge() - student1.getAge();
+        if (student1.getAge() > student2.getAge()) {
+            return -1;
+        } else if (student1.getAge() < student2.getAge()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
