@@ -8,12 +8,13 @@ public class Hippodrome {
     private List<Horse> horses;
     static Hippodrome game;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<Horse> horses = new ArrayList<>();
         horses.add(new Horse("Horse1", 3, 0));
         horses.add(new Horse("Horse2", 3, 0));
         horses.add(new Horse("Horse3", 3, 0));
         game = new Hippodrome(horses);
+        game.run();
     }
 
     public Hippodrome(List<Horse> horses) {
@@ -47,5 +48,7 @@ public class Hippodrome {
             System.out.println();
         }
     }
+
+
 
 }
