@@ -9,11 +9,11 @@ public class Hippodrome {
     static Hippodrome game;
 
     public static void main(String[] args) {
-       List<Horse> horses = new ArrayList<>();
-       horses.add(new Horse("Horse1", 3,0));
-       horses.add(new Horse("Horse2", 3,0));
-       horses.add(new Horse("Horse3", 3,0));
-       game = new Hippodrome(horses);
+        List<Horse> horses = new ArrayList<>();
+        horses.add(new Horse("Horse1", 3, 0));
+        horses.add(new Horse("Horse2", 3, 0));
+        horses.add(new Horse("Horse3", 3, 0));
+        game = new Hippodrome(horses);
     }
 
     public Hippodrome(List<Horse> horses) {
@@ -23,6 +23,7 @@ public class Hippodrome {
     public List<Horse> getHorses() {
         return horses;
     }
+
     public void run() throws InterruptedException {
         for (int i = 1; i <= 100; i++) {
             move();
@@ -30,11 +31,15 @@ public class Hippodrome {
             Thread.sleep(200);
         }
     }
-    public void move(){
 
+    public void move() {
+        for (Horse horse : horses) {
+            horse.move();
+        }
     }
-    public void print(){
-        
+
+    public void print() {
+
     }
 
 }
