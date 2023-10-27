@@ -23,8 +23,12 @@ public class Hippodrome {
     public List<Horse> getHorses() {
         return horses;
     }
-    public void run(){
-
+    public void run() throws InterruptedException {
+        for (int i = 1; i <= 100; i++) {
+            move();
+            print();
+            Thread.sleep(200);
+        }
     }
     public void move(){
 
