@@ -16,7 +16,17 @@ public class Hippodrome {
         game = new Hippodrome(horses);
         game.run();
     }
-
+    public void printWinner() {
+        System.out.println("Winner is " + getWinner().getName() + "!");
+    }
+    public Horse getWinner() {
+        Horse result = horses.get(0);
+        for (Horse horse : horses) {
+            if (horse.getDistance() > result.getDistance())
+                result = horse;
+        }
+        return result;
+    }
     public Hippodrome(List<Horse> horses) {
         this.horses = horses;
     }
