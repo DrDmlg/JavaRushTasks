@@ -15,6 +15,7 @@ public class Hippodrome {
         horses.add(new Horse("Horse3", 3, 0));
         game = new Hippodrome(horses);
         game.run();
+        game.printWinner();
     }
     public void printWinner() {
         System.out.println("Winner is " + getWinner().getName() + "!");
