@@ -36,10 +36,14 @@ public class Horse {
     }
 
     public void move() {
-       distance += Math.random() * speed;
+        distance += Math.random() * speed;
     }
 
     public void print() {
-
+        StringBuilder track = new StringBuilder();
+        for (int i = 0; i < (int) distance; i++) {
+            track.append(".");
+        }
+        System.out.println(track + name);
     }
 }
