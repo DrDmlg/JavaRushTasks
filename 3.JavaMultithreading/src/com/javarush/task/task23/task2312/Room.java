@@ -13,12 +13,23 @@ public class Room {
         game.snake.setDirection(SnakeDirection.DOWN);
     }
 
+    public void createMouse() {
+        int x = (int) (Math.random() * width);
+        int y = (int) (Math.random() * height);
+
+        mouse = new Mouse(x, y);
+    }
+
+    public void eatMouse() {
+        createMouse();
+    }
+
     public void run() {
 
     }
 
     public void print() {
-        
+
     }
 
     public Room(int width, int height, Snake snake) {
