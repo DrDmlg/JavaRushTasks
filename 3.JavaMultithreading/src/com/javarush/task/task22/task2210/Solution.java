@@ -12,17 +12,18 @@ StringTokenizer
 
 public class Solution {
     public static void main(String[] args) {
+        
         String[] array = getTokens("level22.lesson13.task01", ".");
         System.out.println(Arrays.toString(array));
     }
 
     public static String[] getTokens(String query, String delimiter) {
+        ArrayList<String> list = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(query, delimiter);
-        String[] tokens = new String[tokenizer.countTokens()];
-        int i = 0;
         while (tokenizer.hasMoreTokens()) {
-            tokens[i++] = tokenizer.nextToken();
+            list.add(tokenizer.nextToken());
         }
-        return tokens;
+        String[] array = list.stream().toArray(String[]::new);
+        return array;
     }
 }
