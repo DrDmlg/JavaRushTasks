@@ -10,9 +10,25 @@ public class Solution {
     }
 
     public static String getPartOfString(String string) {
-        return null;
+        if(string == null){
+            throw new TooShortStringException();
+        }
+        String[] space = string.split(" ");
+
+        if(space.length < 5) throw  new TooShortStringException();
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 1; i < 5; i++) {
+            stringBuilder.append(space[i]);
+            stringBuilder.append(" ");
+        }
+        return stringBuilder.toString().trim();
     }
 
-    public static class TooShortStringException {
+    public static class TooShortStringException extends RuntimeException {
+
     }
 }
+
+
