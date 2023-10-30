@@ -1,6 +1,6 @@
 package com.javarush.task.task23.task2312;
 
-public class SnakeSection {
+public class SnakeSection { //кусочек змеи
     private int x;
     private int y;
 
