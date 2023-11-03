@@ -11,6 +11,9 @@ public class Room {
     public static void main(String[] args) {
         game = new Room(20, 20, new Snake(10, 10));
         game.snake.setDirection(SnakeDirection.DOWN);
+        game.createMouse();
+        game.run();
+
     }
 
     public void createMouse() {
@@ -22,6 +25,10 @@ public class Room {
 
     public void eatMouse() {
         createMouse();
+    }
+
+    public void sleep() {
+        
     }
 
     public void run() {
