@@ -21,8 +21,26 @@ public class Snake {
         return sections.get(0).getY();
     }
 
-    public void move(){
-        
+   
+    public void move() {
+        if (!isAlive) return;
+
+        if (direction == SnakeDirection.UP)
+            move(0, -1);
+        else if (direction == SnakeDirection.RIGHT)
+            move(1, 0);
+        else if (direction == SnakeDirection.DOWN)
+            move(0, 1);
+        else if (direction == SnakeDirection.LEFT)
+            move(-1, 0);
+    }
+
+    /**
+     * Метод перемещает змею в соседнюю клетку.
+     * Координаты клетки заданы относительно текущей головы с помощью переменных (dx, dy).
+     */
+    void move(int dx, int dy) {
+
     }
 
 
