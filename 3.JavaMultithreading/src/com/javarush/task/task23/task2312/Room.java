@@ -17,6 +17,7 @@ public class Room {
         this.width = width;
         this.height = height;
         this.snake = snake;
+        game = this;
     }
 
     public Snake getSnake() {
@@ -149,7 +150,6 @@ public class Room {
         game.createMouse();
         game.run();
     }
-
 
     private int initialDelay = 520;
     private int delayStep = 20;
