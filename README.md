@@ -1,20 +1,21 @@
 # JavaRushTasks
-JavaRush - это обширный курс по программированию на языке Java, включающий в себя более 1200 задач и пару десятков мини-проектов. 
-В ходе курса я вложил более 1500 часов в решение задач и создание мини-проектов.
+JavaRush is an extensive Java programming course comprising over 1200 tasks and several dozen mini-projects. 
+Throughout the course, I dedicated more than 1500 hours to solving tasks and creating mini-projects.
+
+### My applications in the JavaRush course include:
+* [Java Chat Application](3.JavaMultithreading/src/com/javarush/task/task30/task3008)
+* [File archiver](3.JavaMultithreading/src/com/javarush/task/task31/task3110)
+* [HTML Editor](3.JavaMultithreading/src/com/javarush/task/task32/task3209)
+* [MVC Project](3.JavaMultithreading/src/com/javarush/task/task36/task3608)
 
 
+During my learning journey at JavaRush, I also acquired a multitude of additional skills, including:
 
-[Java Chat Application](3.JavaMultithreading/src/com/javarush/task/task30/task3008)
-
-В процессе обучения на JavaRush я также овладел множеством дополнительных навыков, включая:
-
-- ***Maven*** для управления проектами.  
-- ***Git*** для версионного контроля кода.  
-- ***HTTP*** протокол и взаимодействие с веб-сервисами.
-- ***JDBC*** для работы с базами данных.  
-- ***Hibernate*** для ORM (Object-Relational Mapping).  
-- ***Docker*** для контейнеризации приложений.  
-- Работу с ***MySQLWorkbench***, ***DBeaver***, ***PostgreSQL*** и ***MySQL*** для работы с реляционными базами данных.
-- Знание ***HTML*** и ***CSS*** для создания веб-страниц.
-
-В настоящее время продолжаю изучение курса и регулярно публикую результаты на GitHub.
+- ***Maven*** Maven for project management. 
+- ***Git*** for version control.
+- ***HTTP*** protocol and interaction with web services.
+- ***JDBC*** for working with databases.
+- ***Hibernate*** for Object-Relational Mapping (ORM).
+- ***Docker*** for containerizing applications.
+- Proficiency in using ***MySQLWorkbench***, ***DBeaver***, ***PostgreSQL***, and ***MySQL*** for working with relational databases.
+- Knowledge of ***HTML*** and ***CSS*** for creating web pages.
